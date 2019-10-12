@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, inital-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <title>Pokedex</title>
+  </head>
+  <body>
+    <div class="pokedex">
+      <table class="dex-header">
+        <thead>
+          <img src="img/pokemon_logo.png" width="80%" />
+        </thead>
+        <tbody>
+          <ul class="pokemon-list"></ul>
+        </tbody>
+        <br />
+        <tfoot>
+          <img src="img/pokeball.png" width="15%" />
+        </tfoot>
+      </table>
+      <div id="modal-container">
+        <script src="js/promise-polyfill.js"></script>
+        <script src="js/fetch-polyfill.js"></script>
+        <script src="js/scripts.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

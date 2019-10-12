@@ -1,0 +1,147 @@
+body {
+  padding: 10px;
+}
+
+.pokedex {
+  padding: 10px;
+  background-color: rgba(3, 134, 248, 0.2);
+  width: 33%;
+  height: 80%;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  width: 100%;
+  border: black;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 700;
+  background-color: #3a5ca8;
+  color: #ffcb05;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  border-right: 2px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  transition-duration: 0.2s;
+  transition-property: opacity;
+}
+
+.list-item:hover,
+.list-item:focus {
+  cursor: pointer;
+  opacity: 0.8;
+  color: #ffa805;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  display: block;
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: auto;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+
+.modal-close {
+  float: right;
+  display: block;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+.modal p {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.modal-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+@media all and (max-width: 500px) {
+  .pokedex {
+    width: 90%;
+  }
+  .list-item {
+    font-size: 22px;
+  }
+  .list-item:hover {
+    font-size: 24px;
+  }
+  .list-item:focus {
+    font-size: 24px;
+  }
+  .modal-img {
+    width: 90%;
+  }
+  .modal h1 {
+    font-size: 30px;
+  }
+  .modal p {
+    font-size: 24px;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 800px) {
+  .pokedex {
+    width: 70%;
+  }
+  .modal h1 {
+    font-size: 45px;
+  }
+  .modal p {
+    font-size: 26px;
+  }
+}
+
+@media all and (min-width: 800px) {
+  .pokedex {
+    width: 50%;
+  }
+}
