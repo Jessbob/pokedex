@@ -1,4 +1,4 @@
-var pokemonReository = (function() {
+var pokemonRepository = (function() {
   var repository = [];
   var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
@@ -19,7 +19,7 @@ var pokemonReository = (function() {
   }
 
   function addListItem(pokemon) {
-    var $pokemonList = $("pokemon-list");
+    var $pokemonList = $(".pokemon-list");
     var $listItem = $("<li>");
     var $button = $('<button class="list-item">' + pokemon.name + "</button>");
     $listItem.append($button);
@@ -69,13 +69,13 @@ var pokemonReository = (function() {
   function showModal(item) {
     var $modalContainer = $("#modal-container");
     $modalContainer.empty();
-    var modal = $('<div class = "modal"></div>');
-    var closeButtonElement = $("<button class = modal-close>Close</button>");
+    var modal = $('<div class="modal"></div>');
+    var closeButtonElement = $('<button class="modal-close">Close</button>');
     closeButtonElement.on("click", hideModal);
     var nameElement = $("<h1>" + item.name + "</h1>");
-    var imageElement = $('img class="modal-image">');
+    var imageElement = $('<img class="modal-img">');
     imageElement.attr("src", item.imageUrl);
-    var heightElement = $("<p>" + item.height + "</p>");
+    var heightElement = $("<p>" + "height : " + item.height + "</p>");
     modal.append(closeButtonElement);
     modal.append(nameElement);
     modal.append(imageElement);
@@ -85,9 +85,23 @@ var pokemonReository = (function() {
   }
 
   function hideModal() {
-    var $modalContainer = $("modal-contianer");
+    var $modalContainer = $("#modal-container");
     $modalContainer.removeClass("is-visible");
   }
+  jQuery(window).on("keydown", e => {
+    var $modalContainer = $("#modal-container");
+    if (e.key === "Escape" && $modalContainer.hasClass("is-visible")) {
+      hideModal();
+    }
+  });
+
+  var $modalContainer = document.querySelector("#modal-container");
+  $modalContainer.addEventListener("click", e => {
+    var target = e.target;
+    if (target === $modalContainer) {
+      hideModal();
+    }
+  });
 
   return {
     add: add,
