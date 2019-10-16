@@ -19,13 +19,19 @@ var pokemonRepository = (function() {
   }
 
   function addListItem(pokemon) {
-    var $pokemonList = $(".pokemon-list");
-    var $listItem = $("<li>");
-    var $button = $('<button class="list-item">' + pokemon.name + "</button>");
-    $listItem.append($button);
-    $pokemonList.append($listItem);
-    $button.on("click", function(event) {
-      showDetails(pokemon);
+    pokemonRepository.loadDetails(pokemon).then(function() {
+      var $pokemonList = $(".list-group");
+
+      var $button = $(
+        '<button type="button" class="btn list-item list-group-item" data-toggle="modal" data-target="#exampleModal"></button>'
+      );
+      $button.text(pokemon.name);
+
+      $pokemonList.append($button);
+
+      $button.on("click", function(event) {
+        showDetails(pokemon);
+      });
     });
   }
 
@@ -67,41 +73,19 @@ var pokemonRepository = (function() {
   }
 
   function showModal(item) {
-    var $modalContainer = $("#modal-container");
-    $modalContainer.empty();
-    var modal = $('<div class="modal"></div>');
-    var closeButtonElement = $('<button class="modal-close">Close</button>');
-    closeButtonElement.on("click", hideModal);
+    var modalBody = $(".modal-body");
+    var modalTitle = $(".modal-title");
+    modalTitle.empty();
+    modalBody.empty();
     var nameElement = $("<h1>" + item.name + "</h1>");
     var imageElement = $('<img class="modal-img">');
     imageElement.attr("src", item.imageUrl);
-    var heightElement = $("<p>" + "height : " + item.height + "</p>");
-    modal.append(closeButtonElement);
-    modal.append(nameElement);
-    modal.append(imageElement);
-    modal.append(heightElement);
-    $modalContainer.append(modal);
-    $modalContainer.addClass("is-visible");
-  }
+    var heightElement = $("<p>" + "Height : " + item.height + "</p>");
 
-  function hideModal() {
-    var $modalContainer = $("#modal-container");
-    $modalContainer.removeClass("is-visible");
+    modalTitle.append(nameElement);
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
   }
-  jQuery(window).on("keydown", e => {
-    var $modalContainer = $("#modal-container");
-    if (e.key === "Escape" && $modalContainer.hasClass("is-visible")) {
-      hideModal();
-    }
-  });
-
-  var $modalContainer = document.querySelector("#modal-container");
-  $modalContainer.addEventListener("click", e => {
-    var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
 
   return {
     add: add,
@@ -109,8 +93,7 @@ var pokemonRepository = (function() {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showModal: showModal,
-    hideModal: hideModal
+    showModal: showModal
   };
 })();
 
