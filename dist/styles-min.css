@@ -1,7 +1,6 @@
 body {
   padding: 10px;
 }
-
 .pokedex {
   padding: 10px;
   background-color: rgba(3, 134, 248, 0.2);
@@ -13,10 +12,9 @@ body {
   font-weight: 700;
   margin: auto;
 }
-
 .list-item {
   width: 100%;
-  border: black;
+  border: #000;
   display: inline-block;
   font-family: inherit;
   font-size: 26px;
@@ -31,16 +29,14 @@ body {
   transition-duration: 0.2s;
   transition-property: opacity;
 }
-
-.list-item:hover,
-.list-item:focus {
+.list-item:focus,
+.list-item:hover {
   cursor: pointer;
   opacity: 0.8;
   color: #ffa805;
   font-size: 30px;
   font-weight: 900;
 }
-
 @media all and (max-width: 500px) {
   .pokedex {
     width: 90%;
@@ -64,7 +60,6 @@ body {
     font-size: 24px;
   }
 }
-
 @media all and (min-width: 500px) and (max-width: 800px) {
   .pokedex {
     width: 70%;
@@ -76,7 +71,6 @@ body {
     font-size: 26px;
   }
 }
-
 @media all and (min-width: 800px) {
   .pokedex {
     width: 50%;
