@@ -64,6 +64,7 @@ var pokemonRepository = (function() {
     return $.ajax(url)
       .then(function(details) {
         item.imageUrl = details.sprites.front_default;
+        item.imageUrlBack = details.sprites.back_default;
         item.height = details.height;
         item.types = Object.keys(details.types);
       })
@@ -80,10 +81,13 @@ var pokemonRepository = (function() {
     var nameElement = $("<h1>" + item.name + "</h1>");
     var imageElement = $('<img class="modal-img">');
     imageElement.attr("src", item.imageUrl);
+    var imageElementBack = $('<img class="modal-img">');
+    imageElementBack.attr("src", item.imageUrlBack);
     var heightElement = $("<p>" + "Height : " + item.height + "</p>");
 
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
+    modalBody.append(imageElementBack);
     modalBody.append(heightElement);
   }
 
